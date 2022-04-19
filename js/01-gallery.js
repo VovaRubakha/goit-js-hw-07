@@ -4,6 +4,10 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
+const markup = galleryItems.map(galleryImg).join(``);
+
+gallery.insertAdjacentHTML("beforeend", markup);
+gallery.addEventListener(`click`, onShowImg);
 
 function galleryImg({ description, original, preview }) {
   return `
@@ -19,12 +23,6 @@ function galleryImg({ description, original, preview }) {
     </div>
   `;
 }
-
-const markup = galleryItems.map(galleryImg).join(``);
-
-gallery.insertAdjacentHTML("beforeend", markup);
-
-gallery.addEventListener(`click`, onShowImg);
 
 function onShowImg(event) {
   event.preventDefault();
